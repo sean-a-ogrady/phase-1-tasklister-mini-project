@@ -39,8 +39,35 @@ document.addEventListener("DOMContentLoaded", () => {
     newTask.append(deleteButton);
     tasks.appendChild(newTask);
     i++;
+    sortByPriority(tasks);
   });
 });
+function sortByPriority(tasks){
+  const liList = tasks.querySelectorAll("li");
+  const sortedList = [];
+  liList.forEach((li) => {
+    if (li.style.backgroundColor === 'red'){
+      sortedList.push(li);
+    }
+  });
+  liList.forEach((li) => {
+    if (li.style.backgroundColor === 'yellow'){
+      sortedList.push(li);
+    }
+  });
+  liList.forEach((li) => {
+    if (li.style.backgroundColor === 'green'){
+      sortedList.push(li);
+    }
+  });
+  while (tasks.firstChild) {
+    tasks.removeChild(tasks.lastChild);
+  }
+  sortedList.forEach((li) => {
+    tasks.appendChild(li);
+  });
+
+}
 
 
 /**
